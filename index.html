@@ -1,7 +1,103 @@
 <!DOCTYPE html>
-<head>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <title>Women's History Month</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <p>hi</p>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a class="nav-logo" href="index.html">Women in Computing</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="pioneers.html">Pioneers</a>
+                <a href="timeline.html">Timeline</a>
+                <a href="resources(hiddenword:future).html">Resources</a>
+                <a href="about.html">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+
+        <h1>Happy Women's History Month!</h1>
+
+        <!-- 3D Heart -->
+        <div id="heart-container"></div>
+
+        <h2>
+            Did you know that women have been at the forefront of computer science?
+            The first computer programmer was Ada Lovelace!
+        </h2>
+
+        <p>
+            This Women's History Month, we celebrate the incredible contributions
+            women have made to technology and innovation.
+        </p>
+        <p style = 'color:#f9f6fb'>hidden word: 'the'</p>
+        <section class="challenge">
+            <h2>The Hidden Challenge</h2>
+
+            <p>
+                This website contains a variety of hidden words. When you piece them
+                together into a sentence, they will reveal the greatest programmer
+                of all time!
+            </p>
+        </section>
+        <h3>Fill in the blanks to reveal the hidden sentence:</h3>
+        <form id="hidden-sentence-form">
+            <input type="text" placeholder="Word 1" id="word1" oninput="checkWord(1)" class="word-input">
+            <input type="text" placeholder="Word 2" id="word2" oninput="checkWord(2)" class="word-input">
+            <input type="text" placeholder="Word 3" id="word3" oninput="checkWord(3)" class="word-input">
+            <input type="text" placeholder="Word 4" id="word4" oninput="checkWord(4)" class="word-input">
+            <input type="text" placeholder="Word 5" id="word5" oninput="checkWord(5)" class="word-input">
+            <input type="text" placeholder="Word 6" id="word6" oninput="checkWord(6)" class="word-input">
+        </form>
+
+        <p id="feedback" style="margin-top:10px;font-weight:bold;"></p>
+
+        <script>
+        const answers = ["The","future","of","tech","is","you"];
+
+        function checkWord(index) {
+            const inputEl = document.getElementById("word" + index);
+            const value = inputEl.value.trim().toLowerCase();
+            const correctWord = answers[index-1].toLowerCase();
+            const feedback = document.getElementById("feedback");
+
+            if (value === correctWord) {
+                inputEl.style.color = "#4CAF50"; 
+            } else if (value.length > 0) {
+                inputEl.style.color = "#e53935";
+            } else {
+                inputEl.style.color = "#333";
+            }
+            let allCorrect = true;
+            for (let i = 1; i <= answers.length; i++) {
+                const val = document.getElementById("word" + i).value.trim().toLowerCase();
+                if (val !== answers[i-1].toLowerCase()) {
+                    allCorrect = false;
+                    break;
+                }
+            }
+
+            if (allCorrect) {
+                feedback.textContent = "🎉 Correct! The hidden sentence is: 'The future of tech is you'!";
+                feedback.style.color = "#4CAF50";
+            } else {
+                feedback.textContent = "Keep going! Correct words are green.";
+                feedback.style.color = "#333";
+            }
+        }
+        </script>
+    </main>
+
+    
+    <script src="hiddenWord.js"></script>
 </body>
+
+</html>
