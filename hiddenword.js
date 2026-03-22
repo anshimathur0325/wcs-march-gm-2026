@@ -28,7 +28,7 @@ window.collectWord = function(inputBase64) {
             const word = getHiddenWord();
 
             console.log("%cCongrats! You discovered the hidden word!", "color: green; font-weight: bold; font-size: 16px;");
-            console.log("%cHidden word: " + word, "color: purple; font-weight: bold;");
+            console.log("%cHidden word: " + word + "!", "color: purple; font-weight: bold;");
         } else {
             console.log("%cWrong key! Keep trying...", "color: red; font-weight: bold;");
         }
