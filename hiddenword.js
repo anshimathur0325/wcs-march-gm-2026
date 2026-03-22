@@ -28,7 +28,7 @@ window.collectWord = function(inputBase64) {
             const word = getHiddenWord();
 
             console.log("%cCongrats! You discovered the hidden word!", "color: green; font-weight: bold; font-size: 16px;");
-            console.log("%cHidden word: " + word + "!", "color: purple; font-weight: bold;");
+            console.log("%cHidden word: '" + word + "!'", "color: purple; font-weight: bold;");
         } else {
             console.log("%cWrong key! Keep trying...", "color: red; font-weight: bold;");
         }
@@ -48,11 +48,12 @@ const database = {
     },
     __internal__: [
         104,105,100,100,101,110,32,119,111,114,100,32,58,32,121,111,117
-    ]
+    ],
+    __meta__: [111, 102] 
 };
 // call this function->
-window.readInternal = function() {
-    return database.__internal__
+window.readMeta = function() {
+    return database.__meta__
         .map(c => String.fromCharCode(c))
         .join("");
 };
