@@ -14,17 +14,13 @@ function getHiddenWord() {
 }
 
 window.collectWord = function(inputBase64) {
-    if (collectedYou) {
-        console.log("%cYou already found the hidden word!", "color: green; font-weight: bold;");
-        return;
-    }
+    
 
     try {
         const decoded = atob(inputBase64);
 
         if (checksum(decoded) === correctChecksum && decoded.length === 7) {
-            collectedYou = true;
-
+         
             const word = getHiddenWord();
 
             console.log("%cCongrats! You discovered the hidden word!", "color: green; font-weight: bold; font-size: 16px;");
@@ -37,9 +33,6 @@ window.collectWord = function(inputBase64) {
     }
 }
 
-window.isCollected = function() {
-    return collectedYou;
-}
 
 const database = {
     cache: {},
